@@ -51,6 +51,8 @@ SIMPLE_JWT = {
 
 # CORS_ORIGIN_WHITELIST = [
 #     'http://localhost:8000',]
+
+CSRF_TRUSTED_ORIGINS = ['https://mep-backend2-production.up.railway.app']
 CORS_ALLOW_ALL_ORIGINS = True
 
 AUTH_PROFILE_MODULE = 'mep.MyUser'
