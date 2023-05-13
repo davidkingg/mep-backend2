@@ -23,7 +23,7 @@ class MepProjects(models.Model):
     description = models.TextField(("Description"), null=True, blank=True, default=None)
     image = models.ImageField(_("Image"),upload_to=upload_to, blank=True, null=True)
     services = models.TextField(("Description"), null=True, blank=True, default=None)
-    client = models.CharField(("Company name"), max_length=255)
+    client = models.CharField(("Company name"), max_length=255, null=True,)
     project_status = models.CharField(
         max_length = 20,
         choices = PROJECT_CHOICES,
