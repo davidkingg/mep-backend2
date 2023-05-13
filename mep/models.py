@@ -4,6 +4,14 @@ from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
 from django.utils.translation import gettext_lazy as _
+
+PROJECT_CHOICES = (
+    ("completed", "Completed"),
+    ("progress", "In Progress"),
+    ("paused", "Paused"),
+    ("failed", "Failed"),
+)
+
 def upload_to(instance, filename):
     return '{filename}'.format(filename=filename)
 
@@ -14,6 +22,15 @@ class MepProjects(models.Model):
     feature = models.BooleanField(default=True)
     description = models.TextField(("Description"), null=True, blank=True, default=None)
     image = models.ImageField(_("Image"),upload_to=upload_to, blank=True, null=True)
+    services = models.TextField(("Description"), null=True, blank=True, default=None)
+    client = models.CharField(("Company name"), max_length=255)
+    project_status = models.CharField(
+        max_length = 20,
+        choices = PROJECT_CHOICES,
+        default = 'completed',
+        null=True,
+        )
+    
     def __str__(self):
         return self.name
 
